@@ -21,7 +21,6 @@ class Enemy extends SpriteComponent with CollisionCallbacks {
 
   @override
   void update(double dt) {
-    // TODO: implement update
     super.update(dt);
     position.y += speed * dt;
 
@@ -33,9 +32,12 @@ class Enemy extends SpriteComponent with CollisionCallbacks {
   @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollision(intersectionPoints, other);
+    int scoreEnemy1 = 15;
     if (other is Proyectail) {
       removeFromParent();
       other.removeFromParent();
+      GalaxyWars.score += scoreEnemy1;
+      print("Puntos: ${GalaxyWars.score}");
     }
   }
 }
